@@ -1,0 +1,40 @@
+.startblock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.244);
+  border-radius: 2rem;
+  margin: 5% 10%;
+  padding: 3%;
+  color: white;
+  
+}
+  
+.img123 {
+    width: 300px; /* Set your desired width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: round the corners */
+    border: 5px solid transparent;
+    animation: glowing 2s infinite;
+    margin: 3rem;
+  }
+  
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 5px #89CFF0, 0 0 10px #89CFF0, 0 0 15px #89CFF0, 0 0 20px #89CFF0;
+    }
+    50% {
+      box-shadow: 0 0 10px #89CFF0, 0 0 20px #89CFF0, 0 0 30px #89CFF0, 0 0 40px #89CFF0;
+    }
+    100% {
+      box-shadow: 0 0 5px #89CFF0, 0 0 10px #89CFF0, 0 0 15px #89CFF0, 0 0 20px #89CFF0;
+    }
+  }
+  
+  .btn
+  {
+    width: 7rem;
+  }
