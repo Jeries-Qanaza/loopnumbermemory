@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/loopnumbermemory/static/css/main.699d7a0f.css",
+    "main.js": "/loopnumbermemory/static/js/main.fdb48318.js",
+    "static/js/453.e2d68080.chunk.js": "/loopnumbermemory/static/js/453.e2d68080.chunk.js",
+    "static/media/looplogo.png": "/loopnumbermemory/static/media/looplogo.422d13ee60256abc82cb.png",
+    "static/media/img123.png": "/loopnumbermemory/static/media/img123.183bcbbeaace6b9c35e2.png",
+    "index.html": "/loopnumbermemory/index.html",
+    "main.699d7a0f.css.map": "/loopnumbermemory/static/css/main.699d7a0f.css.map",
+    "main.fdb48318.js.map": "/loopnumbermemory/static/js/main.fdb48318.js.map",
+    "453.e2d68080.chunk.js.map": "/loopnumbermemory/static/js/453.e2d68080.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.699d7a0f.css",
+    "static/js/main.fdb48318.js"
+  ]
+}
