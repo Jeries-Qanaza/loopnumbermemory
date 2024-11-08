@@ -9,22 +9,30 @@ const Game = () => {
   const [showInput, setShowInput] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [userAnswer, setUserAnswer] = useState(null); // State to store the user's answer
+  const [userAnswer, setUserAnswer] = useState(null);
 
   const inputRef = useRef(null);
 
   useEffect(() => {
     if (!gameOver) {
       const numberLength = level;
-      const number = Math.floor(Math.random() * Math.pow(10, numberLength));
+      let number;
+
+      // Generate a number with the correct length
+      do {
+        number = Math.floor(Math.random() * Math.pow(10, numberLength));
+      } while (String(number).length < numberLength);
+
       setRnd(number);
+
+      const timerDuration = level < 5 ? 1400 * level : 1000 * level;
 
       const timer = setTimeout(() => {
         setVisible(false);
         setShowInput(true);
-      }, 1400 * level);
+      }, timerDuration);
 
-      document.documentElement.style.setProperty('--loading-duration', `${1.4*level}s`);
+      document.documentElement.style.setProperty('--loading-duration', `${timerDuration / 1000}s`);
       setAnimate(true);
 
       return () => clearTimeout(timer);
@@ -33,21 +41,21 @@ const Game = () => {
 
   const handleSubmit = useCallback(() => {
     const userInputElem = inputRef.current;
-    const userInput = userInputElem.value.trim(); // Trim the input value to remove whitespace
+    const userInput = userInputElem.value.trim();
 
     if (userInput === '') {
-      alert('Please enter a valid number'); // Display an error message if the input is empty
+      alert('Please enter a valid number');
       return;
     }
 
-    const parsedUserInput = parseInt(userInput, 10); // Parse the input value as an integer
+    const parsedUserInput = parseInt(userInput, 10);
 
     if (isNaN(parsedUserInput)) {
-      alert('Please enter a valid number'); // Display an error message if the input is not a valid number
+      alert('Please enter a valid number');
       return;
     }
 
-    setUserAnswer(parsedUserInput); // Save the user's answer
+    setUserAnswer(parsedUserInput);
 
     if (parsedUserInput === rnd) {
       setScore(score + 1);
@@ -95,13 +103,12 @@ const Game = () => {
     setShowInput(false);
     setAnimate(false);
     setGameOver(false);
-    setUserAnswer(null); // Reset user answer
+    setUserAnswer(null);
   };
 
   const GameOver = () => {
-    const correctDigits = String(rnd).split(''); // Ensure the correct number has leading zeros if necessary
-    console.log("userAnswer:", userAnswer);
-    const userDigits = String(userAnswer); // Ensure the user's answer has leading zeros if necessary
+    const correctDigits = String(rnd).split('');
+    const userDigits = String(userAnswer);
 
     return (
       <div className="game-over">
@@ -111,8 +118,7 @@ const Game = () => {
         <div className="number-container">
           <h2>Correct Number:</h2>
           <div className="number-display">
-            { rnd}
-  
+            {rnd}
           </div>
 
           <h2>Your Answer:</h2>
@@ -149,7 +155,7 @@ const Game = () => {
                 className="userInput"
                 type="text"
                 ref={inputRef}
-                inputmode="numeric"
+                inputMode="numeric"
               />
               <button className="submit" onClick={handleSubmit}>Submit</button>
             </div>
